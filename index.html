@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="@lhg">
+	<title>task 14</title>
+</head>
+<body>
+	<h3>污染城市列表</h3>
+	<ul id="api-list">
+	</ul>
+</body>
+	<script>
+		var aqiData = [
+			["北京", 90],
+			["上海", 50],
+			["福州", 10],
+			["广州", 50],
+			["成都", 90],
+			["西安", 100]
+		];
+		(function(Data) {
+			var data = Data,
+		            ul = document.getElementById('api-list');
+			    str = "";
+			data.filter(function(item, index, array) {
+				return item[1] > 60;
+			})
+			.sort(function(item1, item2) {
+				return item1 - item2;
+			})
+			.forEach(function(item, index, array) {
+				var num = index + 1;
+				str += "<li>第" + num + '名：' + item[0] + "," + item[1] + "</li>";
+			});
+			ul.innerHTML = str;
+		})(aqiData);
+	</script>
+</html>
